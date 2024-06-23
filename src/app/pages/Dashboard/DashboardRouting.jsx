@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Quotes from "./Quotes";
+import DashboardPage from "./DashboardPage";
 
-export default function QuotesRouting() {
+export default function DashboarRouting({onLogout}) {
   return (
     <>
       <Routes>
         <Route path="">
-          <Route path="" element={<Quotes />} />
+          <Route path="" element={<DashboardPage onLogout={onLogout}/>} />
         </Route>
       </Routes>
     </>
