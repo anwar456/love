@@ -14,7 +14,7 @@ export default function UserPage() {
     return (
         <Container className='mt-3'>
             <h1 className='text-center mb-3'>Data User</h1>
-            <Table striped bordered hover>
+            <Table bordered hover>
                 <thead>
                     <tr>
                         <th>No</th>
