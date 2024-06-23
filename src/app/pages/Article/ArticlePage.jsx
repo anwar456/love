@@ -75,7 +75,8 @@ const SearchableArticleList = () => {
             </Row>
 
             {/* Pagination */}
-            <div className="d-flex justify-content-center mt-4">
+            <div className="d-flex justify-content-between mt-4">
+                <p>Total {dummyArticles?.length} data</p>
                 <PaginationComponent
                     currentPage={currentPage}
                     totalPages={Math.ceil(filteredArticles.length / perPage)}
