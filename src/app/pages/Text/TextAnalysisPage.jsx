@@ -96,8 +96,8 @@ const AnalysisPage = () => {
                                 <Button type="submit">
                                     {loading ? 'Loading...' : 'Analyze'}
                                 </Button>
-                                <Button type='button' variant='warning' onClick={handleRefresh}>
-                                    Refresh
+                                <Button type='button' variant='success' onClick={handleRefresh} className='text-white font-weight-700'>
+                                    <i className="bi bi-arrow-clockwise"></i>
                                 </Button>
                             </div>
                         </Form>

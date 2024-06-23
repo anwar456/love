@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Container } from 'react-bootstrap';
+import styled from 'styled-components';
 
 const WeatherComponent = () => {
     const [weatherData, setWeatherData] = useState(null);
@@ -46,21 +47,66 @@ const WeatherComponent = () => {
     const location = "London";
 
     return (
-        <Container className='mt-3'>
-            <h1 className='text-center mb-3'>Weather</h1>
-            <div className='d-flex justify-content-center align-items-center'>
-                <Card style={{ width: '30rem' }}>
-                    <Card.Body>
-                        <div className='d-flex flex-column align-items-center'>
-                            <p>Location: {location}</p>
-                            <p>Temperature: {temperature}°C</p>
-                            <p>Condition: {weatherCondition}</p>
-                        </div>
-                    </Card.Body>
-                </Card>
-            </div>
-        </Container>
+        <ContainerCustom>
+            <Title>Weather</Title>
+            <WeatherCard>
+                <Location>{location}</Location>
+                <Temperature>{temperature}°C</Temperature>
+                <Condition>
+                    <WeatherIcon className={`bi ${weatherCondition === 'Clear' ? 'bi-sun' : 'bi-cloud'}`} weatherCondition={weatherCondition} />
+                    {weatherCondition}
+                </Condition>
+            </WeatherCard>
+        </ContainerCustom>
     );
 };
 
 export default WeatherComponent;
+
+const ContainerCustom = styled.div`
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 3rem;
+`;
+
+const WeatherCard = styled.div`
+  width: 25rem;
+  background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+`;
+
+const Location = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+`;
+
+const Temperature = styled.p`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+`;
+
+const Condition = styled.p`
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+`;
+
+const WeatherIcon = styled.i`
+  font-size: 2rem;
+  margin-right: 10px;
+  color: ${props => (props.weatherCondition === 'Clear' ? '#FFD700' : '#ffffff')};
+`;
